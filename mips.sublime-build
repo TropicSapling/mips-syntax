@@ -1,0 +1,8 @@
+{
+	"cmd": [
+		"spim",
+		"-f",
+		"$file"
+	],
+	"selector": "source.mips"
+}
