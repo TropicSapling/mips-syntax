@@ -34,7 +34,7 @@
     },
     {
         "name": "support.function.other.mips",
-        "match": "\\b(abs|b|beqz|bge|bgt|bgtu|ble|bleu|blt|bltu|bnez|div|divu|la|li|move|mul|neg|not|rem|remu|seq|sge|sgt|sle|sne)\\b",
+        "match": "\\b(abs|b|beqz|bge|bgezal|bgt|bgtz|bgtu|ble|bleu|blez|bgez|blt|bltz|bltzal|bltu|bnez|div|divu|la|li|move|mul|neg|not|rem|remu|seq|sge|sgt|sle|sne)\\b",
         "comment": "Pseudo instructions"
     },
     {
