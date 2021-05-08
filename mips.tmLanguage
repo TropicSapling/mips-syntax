@@ -63,7 +63,7 @@
 			<key>comment</key>
 			<string>Pseudo instructions</string>
 			<key>match</key>
-			<string>\b(abs|b|beqz|bge|bgt|bgtu|ble|bleu|blt|bltu|bnez|div|divu|la|li|move|mul|neg|not|rem|remu|seq|sge|sgt|sle|sne|multu|mul.s|nop)\b</string>
+			<string>\b(abs(.s)?|b|beqz|bge|bgt|bgtu|ble|bleu|blt|bltu|bnez|div|divu|la|li|move|mul(.s)?|neg|not|rem|remu|seq|sge|sgt|sle|sne|multu|nop)\b</string>
 			<key>name</key>
 			<string>support.function.other.mips</string>
 		</dict>
