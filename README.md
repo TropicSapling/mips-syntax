@@ -1,22 +1,27 @@
 mips-syntax
 ===========
 
-MIPS syntax highlighting package for [Sublime Text 2](https://www.sublimetext.com/) and [Sublime Text 3](https://www.sublimetext.com/3).
+MIPS syntax highlighting package for [Sublime Text](https://www.sublimetext.com/) (versions 2-4).
 
 
 For users
 ---------
 
-Recommended: Install [PackageControl](https://packagecontrol.io/).
-Then open the command palette (default keybinding: `Strg+Shift+P`), select `Package Control: Install Package` and choose `MIPS Syntax`.
+#### Recommended
+1. Install [PackageControl](https://packagecontrol.io/).
+2. Open the command palette (default keybinding: `Ctrl+Shift+P`), select `Package Control: Install Package` and choose `MIPS Syntax`.
+3. Download all files and move them into `Packages/MIPS Syntax/` (create folder if it doesn't exist). This step is needed to get the changes from this fork, which are not included in the installed package.
+    - Linux full path: `~/.config/sublime-text-<VERSION>/Packages/MIPS Syntax/`
+    - Windows full path: `C:\Users\<USER>\AppData\Roaming\Sublime Text <VERSION>\Packages\MIPS Syntax`
 
-Manual (not recommended): Click on "Download ZIP", extract the archive into sublime's package folder, e.g. `~/.config/sublime-text-3/Packages/User/`.
+#### Manual
+Click on "Download ZIP", extract the archive into sublime's package folder, e.g. `~/.config/sublime-text-3/Packages/User/`.
 
 
 For developers
 --------------
 
-If you want to change something, you need to install AAAPackageDev for sublime and then:
+If you want to change something, you can do that just by editing the files, but you can also install AAAPackageDev for sublime and then:
 
 * edit `mips.JSON-tmLanguage`
 * run *build* in Sublime and select *Convert to: Property List*
