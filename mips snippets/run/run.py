@@ -10,9 +10,9 @@ with open('MIPS.txt') as file:
 
 
 
-for arquivo in glob.glob('../*.sublime-snippet'):
-    print('Removendo:', arquivo)
-    os.remove(arquivo)
+# for arquivo in glob.glob('../*.sublime-snippet'):
+#     print('Removendo:', arquivo)
+#     os.remove(arquivo)
 
 
 
@@ -34,7 +34,7 @@ for linha in linhas:
     <content><![CDATA['''+CDATA+''']]></content>
     <tabTrigger>'''+funcName+'''</tabTrigger>
     <scope>source.mips</scope>
-</snippet>'''
+</snippet>\n'''
 
 
 
