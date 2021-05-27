@@ -1,6 +1,6 @@
 <!-- THIS WAS AUTOMATED GENERATED -->
 <snippet>
-    <description>add $rt,$zero,$zero</description>
+    <description>add $rt, $zero, $zero</description>
     <content><![CDATA[clear \$${1:rt}]]></content>
     <tabTrigger>clear_</tabTrigger>
     <scope>source.mips</scope>

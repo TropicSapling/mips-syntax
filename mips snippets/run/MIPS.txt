@@ -41,34 +41,34 @@ branch_on_equal                                       beq \$${1:s}, \$${2:t}, ${
 branch_on_not_equal                                   bne \$${1:s}, \$${2:t}, ${3:Label}                      if ($s != $t) go to PC+4+4*C
 jump_register                                         jr \$${1:s}                                             goto address $s
 jump_and_link                                         jal ${1:Label}                                          $31 = PC + 4; PC = PC+4[31:28] . C*4
-move_                                                 move \$${1:rt},\$${2:rs}                                add $rt,$rs,$zero
-clear_                                                clear \$${1:rt}                                         add $rt,$zero,$zero
-not_                                                  not \$${1:rt},\$${2:rs}                                 nor $rt,$rs,$zero
-float_add_single                                      add.s \$${1:x},\$${2:y},\$${3:z}                        $x = $y + $z
-float_subtract_single                                 sub.s \$${1:x},\$${2:y},\$${3:z}                        $x = $y - $z
-float_multiply_single                                 mul.s \$${1:x},\$${2:y},\$${3:z}                        $x = $y * $z
-float_divide_single                                   div.s \$${1:x},\$${2:y},\$${3:z}                        $x = $y / $z
-float_add_double                                      add.d \$${1:x},\$${2:y},\$${3:z}                        $x = $y + $z
-float_subtract_double                                 sub.d \$${1:x},\$${2:y},\$${3:z}                        $x = $y - $z
-float_multiply_double                                 mul.d \$${1:x},\$${2:y},\$${3:z}                        $x = $y * $z
-float_divide_double                                   div.d \$${1:x},\$${2:y},\$${3:z}                        $x = $y / $z
-load_word_coprocessor                                 lwcZ \$${1:x},${2:CONST(\$y)}                           Coprocessor[Z].DataRegister[$x] = Memory[$y + CONST]
-store_word_coprocessor                                swcZ \$${1:x},${2:CONST(\$y)}                           Memory[$y + CONST] = Coprocessor[Z].DataRegister[$x]
-float_compare_single                                  c.lt.s \$${1:f2},\$${2:f4}                              if ($f2 &lt; $f4) cond=1; else cond=0
-float_compare_double                                  c.lt.d \$${1:f2},\$${2:f4}                              if ($f2 &lt; $f4) cond=1; else cond=0
+move_                                                 move \$${1:rt}, \$${2:rs}                               add $rt, $rs, $zero
+clear_                                                clear \$${1:rt}                                         add $rt, $zero, $zero
+not_                                                  not \$${1:rt}, \$${2:rs}                                nor $rt, $rs, $zero
+float_add_single                                      add.s \$${1:x}, \$${2:y}, \$${3:z}                      $x = $y + $z
+float_subtract_single                                 sub.s \$${1:x}, \$${2:y}, \$${3:z}                      $x = $y - $z
+float_multiply_single                                 mul.s \$${1:x}, \$${2:y}, \$${3:z}                      $x = $y * $z
+float_divide_single                                   div.s \$${1:x}, \$${2:y}, \$${3:z}                      $x = $y / $z
+float_add_double                                      add.d \$${1:x}, \$${2:y}, \$${3:z}                      $x = $y + $z
+float_subtract_double                                 sub.d \$${1:x}, \$${2:y}, \$${3:z}                      $x = $y - $z
+float_multiply_double                                 mul.d \$${1:x}, \$${2:y}, \$${3:z}                      $x = $y * $z
+float_divide_double                                   div.d \$${1:x}, \$${2:y}, \$${3:z}                      $x = $y / $z
+load_word_coprocessor                                 lwcZ \$${1:x}, ${2:CONST(\$y)}                          Coprocessor[Z].DataRegister[$x] = Memory[$y + CONST]
+store_word_coprocessor                                swcZ \$${1:x}, ${2:CONST(\$y)}                          Memory[$y + CONST] = Coprocessor[Z].DataRegister[$x]
+float_compare_single                                  c.lt.s \$${1:f2}, \$${2:f4}                             if ($f2 &lt; $f4) cond=1; else cond=0
+float_compare_double                                  c.lt.d \$${1:f2}, \$${2:f4}                             if ($f2 &lt; $f4) cond=1; else cond=0
 branch_on_float_true                                  bc1t ${1:100}                                           if (cond == 1) go to PC+4+100
 branch_on_float_false                                 bc1f ${1:100}                                           if (cond == 0) go to PC+4+100
-load_address                                          la \$${1:rd},${2:LabelAddr}                             lui $rd,LabelAddr[31:16]; ori $rd,$rd,LabelAddr[15:0]
-load_immediate                                        li \$${1:rd},${2:IMMED}                                 lui $rd,IMMED[31:16]; ori $rd,$rd,IMMED[15:0]
-branch_unconditionally                                b ${1:Label}                                            beq $zero,$zero,Label
-branch_and_link                                       bal ${1:Label}                                          bgezal $zero,Label
-branch_if_greater_than                                bgt \$${1:rs},\$${2:rt},${3:Label}                      slt $at,$rt,$rs; bne $at,$zero,Label
-branch_if_less_than                                   blt \$${1:rs},\$${2:rt},${3:Label}                      slt $at,$rs,$rt; bne $at,$zero,Label
-branch_if_greater_than_or_equal                       bge \$${1:rs},\$${2:rt},${3:Label}                      slt $at,$rs,$rt; beq $at,$zero,Label
-branch_if_less_than_or_equal                          ble \$${1:rs},\$${2:rt},${3:Label}                      slt $at,$rt,$rs; beq $at,$zero,Label
-branch_if_greater_than_unsigned                       bgtu \$${1:rs},\$${2:rt},${3:Label}                     sltu $at,$rt,$rs; bne $at,$zero,Label
-branch_if_greater_than_zero                           bgtz \$${1:rs},${2:Label}                               slt $at,$zero,$rs; bne $at,$zero,Label
-branch_if_equal_to_zero                               beqz \$${1:rs},${2:Label}                               beq $rs,$zero,Label
-multiply_                                             mul \$${1:d},\$${2:s},\$${3:t}                          mult $s,$t; mflo $d
-divides_and_returns_quotient                          div \$${1:d},\$${2:s},\$${3:t}                          div $s,$t; mflo $d
-divides_and_returns_remainder                         rem \$${1:d},\$${2:s},\$${3:t}                          div $s,$t; mfhi $d
+load_address                                          la \$${1:rd}, ${2:LabelAddr}                            lui $rd, LabelAddr[31:16]; ori $rd, $rd, LabelAddr[15:0]
+load_immediate                                        li \$${1:rd}, ${2:IMMED}                                lui $rd, IMMED[31:16]; ori $rd, $rd, IMMED[15:0]
+branch_unconditionally                                b ${1:Label}                                            beq $zero, $zero, Label
+branch_and_link                                       bal ${1:Label}                                          bgezal $zero, Label
+branch_if_greater_than                                bgt \$${1:rs}, \$${2:rt}, ${3:Label}                    slt $at, $rt, $rs; bne $at, $zero, Label
+branch_if_less_than                                   blt \$${1:rs}, \$${2:rt}, ${3:Label}                    slt $at, $rs, $rt; bne $at, $zero, Label
+branch_if_greater_than_or_equal                       bge \$${1:rs}, \$${2:rt}, ${3:Label}                    slt $at, $rs, $rt; beq $at, $zero, Label
+branch_if_less_than_or_equal                          ble \$${1:rs}, \$${2:rt}, ${3:Label}                    slt $at, $rt, $rs; beq $at, $zero, Label
+branch_if_greater_than_unsigned                       bgtu \$${1:rs}, \$${2:rt}, ${3:Label}                   sltu $at, $rt, $rs; bne $at, $zero, Label
+branch_if_greater_than_zero                           bgtz \$${1:rs}, ${2:Label}                              slt $at, $zero, $rs; bne $at, $zero, Label
+branch_if_equal_to_zero                               beqz \$${1:rs}, ${2:Label}                              beq $rs, $zero, Label
+multiply_                                             mul \$${1:d}, \$${2:s}, \$${3:t}                        mult $s, $t; mflo $d
+divides_and_returns_quotient                          div \$${1:d}, \$${2:s}, \$${3:t}                        div $s, $t; mflo $d
+divides_and_returns_remainder                         rem \$${1:d}, \$${2:s}, \$${3:t}                        div $s, $t; mfhi $d
